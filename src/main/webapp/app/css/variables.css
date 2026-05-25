@@ -1,0 +1,133 @@
+
+/* =========================================================
+   BASE TOKENS
+   ========================================================= */
+
+:root {
+
+  /* =========================
+     TYPOGRAPHY
+     ========================= */
+
+  --font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+  --font-2xl: 24px;
+  --font-3xl: 32px;
+  --font-4xl: 40px;
+
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* =========================
+     SPACING (UNCHANGED - GOOD)
+     ========================= */
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+
+  /* =========================
+     RADIUS (LESS BOXY, STILL CLEAN)
+     ========================= */
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-full: 999px;
+
+  /* =========================
+     COLORS - BASE
+     ========================= */
+
+  --background: #f4f6f9;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --border-hover: #d1d5db;
+
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-inverse: #ffffff;
+
+  /* =========================
+     SIDEBAR
+     ========================= */
+
+  --sidebar: #ffffff;
+  --sidebar-hover: #f3f4f6;
+  --sidebar-active: #111827;
+
+  /* =========================
+     BRAND
+     ========================= */
+
+  --brand: #111827;
+
+  /* =========================
+     STATUS COLORS
+     ========================= */
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+
+  --danger-light: #fee2e2;
+
+  /* =========================
+     BADGES
+     ========================= */
+
+  --badge-default: #f3f4f6;
+  --badge-success: #d1fae5;
+  --badge-warning: #fef3c7;
+  --badge-danger: #fee2e2;
+  --badge-info: #dbeafe;
+
+  /* =========================
+     BUTTONS
+     ========================= */
+
+  --button-primary: #111827;
+  --button-primary-hover: #111827;
+  --button-primary-text: #ffffff;
+
+  /* =========================
+     SHADOWS (SLIGHTLY SOFTER, MORE NATURAL)
+     ========================= */
+
+  --shadow-sm: 0 1px 6px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 6px 16px rgba(17, 24, 39, 0.08);
+  --shadow-lg: 0 14px 28px rgba(17, 24, 39, 0.10);
+
+  /* =========================
+     TRANSITIONS (NONE - STILL STATIC UI)
+     ========================= */
+
+  --transition-fast: none;
+  --transition-normal: none;
+
+  /* =========================
+     LAYOUT
+     ========================= */
+
+  --sidebar-width: 290px;
+}
