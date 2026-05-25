@@ -4,9 +4,9 @@ angular.module('nexus')
     templateUrl: 'components/brand/brand.html',
     controller: BrandController,
     bindings: {
-        text: '@?',
-        icon: '@?',
-        color: '@?'
+        text: '@',
+        icon: '@',
+        color: '@'
     }
 });
 

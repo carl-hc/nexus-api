@@ -4,7 +4,7 @@ angular.module('nexus')
     templateUrl: 'components/sidebar/sidebar.html',
     controller: SidebarController,
     bindings: {
-        active: '@?'
+        active: '@'
     }
 });
 
