@@ -28,7 +28,7 @@
   --font-extrabold: 800;
 
   /* =========================
-     SPACING (UNCHANGED - GOOD)
+     SPACING
      ========================= */
 
   --space-1: 4px;
@@ -43,7 +43,7 @@
   --space-10: 64px;
 
   /* =========================
-     RADIUS (LESS BOXY, STILL CLEAN)
+     RADIUS
      ========================= */
 
   --radius-xs: 4px;
@@ -90,28 +90,57 @@
   --danger: #ef4444;
   --info: #3b82f6;
 
-  --danger-light: #fee2e2;
-
   /* =========================
      BADGES
      ========================= */
 
-  --badge-default: #f3f4f6;
-  --badge-success: #d1fae5;
-  --badge-warning: #fef3c7;
-  --badge-danger: #fee2e2;
-  --badge-info: #dbeafe;
+  --badge-default-bg: #f3f4f6;
+  --badge-default-text: var(--text-primary);
+
+  --badge-success-bg: #d1fae5;
+  --badge-success-text: #065f46;
+
+  --badge-warning-bg: #fef3c7;
+  --badge-warning-text: #92400e;
+
+  --badge-danger-bg: #fee2e2;
+  --badge-danger-text: #991b1b;
+
+  --badge-info-bg: #dbeafe;
+  --badge-info-text: #1e3a8a;
 
   /* =========================
      BUTTONS
      ========================= */
 
-  --button-primary: #111827;
-  --button-primary-hover: #111827;
-  --button-primary-text: #ffffff;
+  /* DEFAULT */
+  --btn-default-bg: #ffffff;
+  --btn-default-text: var(--text-primary);
+  --btn-default-border: var(--border);
+
+  /* PRIMARY */
+  --btn-primary-bg: #111827;
+  --btn-primary-text: #ffffff;
+
+  /* SUCCESS */
+  --btn-success-bg: var(--success);
+  --btn-success-text: #ffffff;
+
+  /* WARNING */
+  --btn-warning-bg: var(--warning);
+  --btn-warning-text: #111827;
+
+  /* DANGER */
+  --btn-danger-bg: var(--danger);
+  --btn-danger-text: #ffffff;
+
+  /* INFO */
+  --btn-info-bg: var(--info);
+  --btn-info-text: #ffffff;
+
 
   /* =========================
-     SHADOWS (SLIGHTLY SOFTER, MORE NATURAL)
+     SHADOWS
      ========================= */
 
   --shadow-sm: 0 1px 6px rgba(17, 24, 39, 0.06);
@@ -119,7 +148,7 @@
   --shadow-lg: 0 14px 28px rgba(17, 24, 39, 0.10);
 
   /* =========================
-     TRANSITIONS (NONE - STILL STATIC UI)
+     TRANSITIONS (DISABLED)
      ========================= */
 
   --transition-fast: none;
