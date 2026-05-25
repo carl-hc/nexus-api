@@ -1,0 +1,13 @@
+
+<div class="brand"
+     ng-class="'brand-' + $ctrl.color">
+
+    <i ng-if="$ctrl.icon"
+       class="fa {{$ctrl.icon}}">
+    </i>
+
+    <span ng-if="!$ctrl.icon">
+        {{$ctrl.initial}}
+    </span>
+
+</div>

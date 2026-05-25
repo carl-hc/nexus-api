@@ -1,0 +1,64 @@
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    width: 56px;
+    height: 56px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-lg);
+
+    font-size: var(--font-lg);
+    font-weight: var(--font-bold);
+
+    border: 1px solid var(--border);
+
+    box-sizing: border-box;
+}
+
+/* DEFAULT */
+
+.brand-default {
+    background: var(--badge-default-bg);
+    color: var(--text-primary);
+}
+
+/* PRIMARY */
+
+.brand-primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
+}
+
+/* INFO */
+
+.brand-info {
+    background: var(--btn-info-bg);
+    color: var(--btn-info-text);
+}
+
+/* SUCCESS */
+
+.brand-success {
+    background: var(--btn-success-bg);
+    color: var(--btn-success-text);
+}
+
+/* WARNING */
+
+.brand-warning {
+    background: var(--btn-warning-bg);
+    color: var(--btn-warning-text);
+}
+
+/* DANGER */
+
+.brand-danger {
+    background: var(--btn-danger-bg);
+    color: var(--btn-danger-text);
+}
