@@ -1,0 +1,71 @@
+
+<aside class="sidebar">
+
+    <div>
+
+        <!-- BRAND -->
+        <div class="sidebar-brand">
+
+            <div class="brand-logo">
+                <i class="fa fa-layer-group"></i>
+            </div>
+
+            <div>
+                <div class="brand-title">Nexus CI</div>
+                <small>Enterprise Platform</small>
+            </div>
+
+        </div>
+
+        <!-- PLATFORM -->
+        <div class="sidebar-group">
+
+            <div class="sidebar-caption">
+                PLATFORM
+            </div>
+
+            <!-- DASHBOARD -->
+            <a class="sidebar-item" ng-class="{active: $ctrl.active === 'home'}" href="/app/#!/">
+
+                <div class="sidebar-item-left">
+                    <i class="fa fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </div>
+
+            </a>
+
+            <!-- PROJECTS -->
+            <a class="sidebar-item" ng-class="{active: $ctrl.active === 'projects'}" href="/app/#!/projects">
+
+                <div class="sidebar-item-left">
+                    <i class="fa fa-cube"></i>
+                    <span>Projects</span>
+                </div>
+
+            </a>
+
+            <!-- PIPELINES -->
+            <a class="sidebar-item" ng-class="{active: $ctrl.active === 'pipelines'}" href="/app/#!/pipelines">
+
+                <div class="sidebar-item-left">
+                    <i class="fa fa-stream"></i>
+                    <span>Pipelines</span>
+                </div>
+
+            </a>
+
+            <!-- BUILDS -->
+            <a class="sidebar-item" ng-class="{active: $ctrl.active === 'builds'}" href="/app/#!/builds">
+
+                <div class="sidebar-item-left">
+                    <i class="fa fa-hammer"></i>
+                    <span>Builds</span>
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</aside>
