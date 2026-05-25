@@ -48,10 +48,6 @@
                         <span>Projects</span>
                     </div>
 
-                    <span class="sidebar-badge">
-                        {{data.projects.length}}
-                    </span>
-
                 </a>
 
                 <!-- PIPELINES -->
@@ -80,22 +76,51 @@
 
         </div>
 
+        <!-- FOOTER -->
+        <div class="sidebar-footer">
+
+            <div class="workspace-card">
+
+                <div class="workspace-avatar">A</div>
+
+                <div class="workspace-info">
+                    <div class="workspace-name">Admin Workspace</div>
+                    <small>Enterprise Plan</small>
+                </div>
+
+                <button class="workspace-btn">
+                    <i class="fa fa-chevron-up"></i>
+                </button>
+
+            </div>
+
+        </div>
+
     </aside>
 
-    <!-- ========================= -->
-    <!-- MAIN -->
-    <!-- ========================= -->
+
+    <!-- =========================================================
+         MAIN CONTENT
+         ========================================================= -->
     <main class="main-content">
 
         <!-- HEADER -->
         <div class="projects-header">
 
             <div>
-                <div class="eyebrow">WORKSPACE</div>
-                <h1 class="projects-title">Projects</h1>
+
+                <div class="eyebrow">
+                    WORKSPACE
+                </div>
+
+                <h1 class="projects-title">
+                    Projects
+                </h1>
+
                 <p class="projects-subtitle">
                     Centralized management for your CI/CD infrastructure
                 </p>
+
             </div>
 
             <div class="header-actions">
@@ -123,7 +148,8 @@
 
         </div>
 
-        <!-- STATS -->
+
+        <!-- OVERVIEW -->
         <div class="overview-grid">
 
             <div class="overview-card">
@@ -136,9 +162,7 @@
                     <div class="overview-value">
                         {{data.projects.length}}
                     </div>
-                    <div class="overview-label">
-                        Total Projects
-                    </div>
+                    <div class="overview-label">Projects</div>
                 </div>
 
             </div>
@@ -146,47 +170,50 @@
             <div class="overview-card">
 
                 <div class="overview-icon success">
-                    <i class="fa fa-check"></i>
+                    <i class="fa fa-stream"></i>
                 </div>
 
                 <div>
                     <div class="overview-value">
-                        Online
+                        {{data.pipelines.length || 0}}
                     </div>
-                    <div class="overview-label">
-                        Infrastructure Status
-                    </div>
+                    <div class="overview-label">Pipelines</div>
                 </div>
 
             </div>
 
-        </div>
-
-        <!-- EMPTY STATE -->
-        <div class="projects-list"
-             ng-if="data.projects.length === 0">
-
-            <div class="overview-card"
-                 style="justify-content:center; flex-direction:column; text-align:center;">
+            <div class="overview-card">
 
                 <div class="overview-icon dark">
-                    <i class="fa fa-cube"></i>
+                    <i class="fa fa-hammer"></i>
                 </div>
 
-                <h3>No projects available</h3>
-
-                <p class="projects-subtitle">
-                    Create your first deployment project.
-                </p>
-
-                <button class="btn btn-primary"
-                        ng-click="openCreateProjectModal()">
-                    Create Project
-                </button>
+                <div>
+                    <div class="overview-value">
+                        {{data.builds.length || 0}}
+                    </div>
+                    <div class="overview-label">Builds</div>
+                </div>
 
             </div>
 
         </div>
+
+
+        <!-- EMPTY -->
+        <div class="empty-projects"
+             ng-if="data.projects.length === 0">
+
+            <h3>No projects available</h3>
+            <p>Create your first deployment project.</p>
+
+            <button class="btn btn-primary"
+                    ng-click="openCreateProjectModal()">
+                Create Project
+            </button>
+
+        </div>
+
 
         <!-- PROJECT LIST -->
         <div class="projects-list"
@@ -203,6 +230,7 @@
                     </div>
 
                     <div>
+
                         <div class="project-name">
                             {{project.name}}
                         </div>
@@ -210,30 +238,39 @@
                         <div class="project-meta">
                             <span>ID #{{project.id}}</span>
                             <span class="dot"></span>
-                            <span>{{project.pipelines.length || 0}} pipelines</span>
+                            <span>
+                                {{project.pipelines.length || 0}} pipelines
+                            </span>
                         </div>
+
                     </div>
 
                 </div>
+
 
                 <!-- CENTER -->
-                <div class="pipeline-group">
+                <div class="project-center">
 
-                    <div class="pipeline-item"
-                         ng-repeat="pipeline in project.pipelines"
-                         ng-click="openPipeline(pipeline.id)">
+                    <div class="pipeline-group"
+                         ng-if="project.pipelines.length > 0">
 
-                        <i class="fa fa-stream"></i>
-                        {{pipeline.name}}
+                        <div class="pipeline-item"
+                             ng-repeat="pipeline in project.pipelines"
+                             ng-click="openPipeline(pipeline.id)">
+
+                            {{pipeline.name}}
+                        </div>
 
                     </div>
 
-                    <span class="project-meta"
-                          ng-if="!project.pipelines || project.pipelines.length === 0">
+                    <div class="no-pipelines"
+                         ng-if="!project.pipelines || project.pipelines.length === 0">
+
                         No pipelines configured
-                    </span>
+                    </div>
 
                 </div>
+
 
                 <!-- RIGHT -->
                 <div class="project-right">
