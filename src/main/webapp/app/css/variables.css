@@ -96,7 +96,7 @@
      ========================= */
 
   --badge-default-bg: #f3f4f6;
-  --badge-default-text: var(--text-primary);
+  --badge-default-text: #111827;
 
   /* PRIMARY */
   --badge-primary-bg: #e0e7ff;
@@ -124,31 +124,43 @@
 
   /* DEFAULT */
   --btn-default-bg: #ffffff;
-  --btn-default-text: var(--text-primary);
-  --btn-default-border: var(--border);
+  --btn-default-text: #111827;
+  --btn-default-border: #e5e7eb;
 
   /* PRIMARY */
-  --btn-primary-bg: var(--primary);
+  --btn-primary-bg: #111827;
   --btn-primary-text: #ffffff;
-  --btn-primary-border: var(--primary);
-  --btn-primary-hover: var(--primary);
-  --btn-primary-active: #0b0f19;
+  --btn-primary-border: #0f172a;
 
   /* SUCCESS */
-  --btn-success-bg: var(--success);
+  --btn-success-bg: #10b981;
   --btn-success-text: #ffffff;
+  --btn-success-border: #0ea371;
 
   /* WARNING */
-  --btn-warning-bg: var(--warning);
+  --btn-warning-bg: #f59e0b;
   --btn-warning-text: #111827;
+  --btn-warning-border: #d97706;
 
   /* DANGER */
-  --btn-danger-bg: var(--danger);
+  --btn-danger-bg: #ef4444;
   --btn-danger-text: #ffffff;
+  --btn-danger-border: #dc2626;
 
   /* INFO */
-  --btn-info-bg: var(--info);
+  --btn-info-bg: #3b82f6;
   --btn-info-text: #ffffff;
+  --btn-info-border: #2563eb;
+
+  /* =========================
+     STATES
+     ========================= */
+
+  --btn-hover-opacity: 0.92;
+  --btn-active-opacity: 0.85;
+
+  --badge-hover-opacity: 0.95;
+  --badge-active-opacity: 0.90;
 
   /* =========================
      SHADOWS
