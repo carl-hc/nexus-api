@@ -1,4 +1,3 @@
-
 /* =========================================================
    BASE TOKENS
    ========================================================= */
@@ -97,57 +96,52 @@
 
   --badge-default-bg: #f3f4f6;
   --badge-default-text: #111827;
+  --badge-default-border: #e5e7eb;
 
-  /* PRIMARY */
   --badge-primary-bg: #e0e7ff;
   --badge-primary-text: #1e1b4b;
+  --badge-primary-border: #c7d2fe;
 
-  /* SUCCESS */
   --badge-success-bg: #d1fae5;
   --badge-success-text: #065f46;
+  --badge-success-border: #a7f3d0;
 
-  /* WARNING */
   --badge-warning-bg: #fef3c7;
   --badge-warning-text: #92400e;
+  --badge-warning-border: #fde68a;
 
-  /* DANGER */
   --badge-danger-bg: #fee2e2;
   --badge-danger-text: #991b1b;
+  --badge-danger-border: #fecaca;
 
-  /* INFO */
   --badge-info-bg: #dbeafe;
   --badge-info-text: #1e3a8a;
+  --badge-info-border: #bfdbfe;
 
   /* =========================
      BUTTONS
      ========================= */
 
-  /* DEFAULT */
   --btn-default-bg: #ffffff;
   --btn-default-text: #111827;
   --btn-default-border: #e5e7eb;
 
-  /* PRIMARY */
   --btn-primary-bg: #111827;
   --btn-primary-text: #ffffff;
   --btn-primary-border: #0f172a;
 
-  /* SUCCESS */
   --btn-success-bg: #10b981;
   --btn-success-text: #ffffff;
   --btn-success-border: #0ea371;
 
-  /* WARNING */
   --btn-warning-bg: #f59e0b;
   --btn-warning-text: #111827;
   --btn-warning-border: #d97706;
 
-  /* DANGER */
   --btn-danger-bg: #ef4444;
   --btn-danger-text: #ffffff;
   --btn-danger-border: #dc2626;
 
-  /* INFO */
   --btn-info-bg: #3b82f6;
   --btn-info-text: #ffffff;
   --btn-info-border: #2563eb;
@@ -156,11 +150,8 @@
      STATES
      ========================= */
 
-  --btn-hover-opacity: 0.92;
-  --btn-active-opacity: 0.85;
-
-  --badge-hover-opacity: 0.95;
-  --badge-active-opacity: 0.90;
+  --state-hover-opacity: 0.92;
+  --state-active-opacity: 0.85;
 
   /* =========================
      SHADOWS
