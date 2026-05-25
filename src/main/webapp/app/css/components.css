@@ -54,7 +54,7 @@ body {
     width: 52px;
     height: 52px;
 
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
 
     background: var(--brand);
     color: var(--text-inverse);
@@ -75,7 +75,9 @@ body {
     color: var(--text-secondary);
 }
 
-/* GROUP */
+/* =========================================================
+   SIDEBAR GROUPS
+   ========================================================= */
 
 .sidebar-group {
     margin-bottom: var(--space-4);
@@ -94,7 +96,9 @@ body {
     color: var(--text-muted);
 }
 
-/* ITEMS */
+/* =========================================================
+   SIDEBAR ITEMS
+   ========================================================= */
 
 .sidebar-item {
     height: 52px;
@@ -110,10 +114,11 @@ body {
     text-decoration: none;
 
     color: var(--text-primary);
-
     background: transparent;
 
     margin-bottom: var(--space-2);
+
+    border: 1px solid transparent;
 }
 
 .sidebar-item:hover {
@@ -137,7 +142,9 @@ body {
     text-align: center;
 }
 
-/* BADGE */
+/* =========================================================
+   SIDEBAR BADGE
+   ========================================================= */
 
 .sidebar-badge {
     min-width: 22px;
@@ -145,8 +152,8 @@ body {
 
     border-radius: var(--radius-full);
 
-    background: var(--badge-default);
-    color: var(--text-primary);
+    background: var(--badge-default-bg);
+    color: var(--badge-default-text);
 
     display: inline-flex;
     align-items: center;
@@ -165,7 +172,9 @@ body {
     padding: var(--space-7);
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .projects-header {
     display: flex;
@@ -196,14 +205,8 @@ body {
 }
 
 /* =========================================================
-   ACTIONS
+   SEARCH
    ========================================================= */
-
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
-}
 
 .search-wrapper {
     width: 320px;
@@ -236,39 +239,81 @@ body {
 }
 
 /* =========================================================
-   BUTTONS
+   BUTTON SYSTEM (UNIFIED)
    ========================================================= */
 
-.btn-create {
-    height: 52px;
-
-    border: none;
+.btn {
     border-radius: var(--radius-sm);
-
-    padding: 0 var(--space-6);
-
-    background: var(--button-primary);
-    color: var(--button-primary-text);
 
     font-weight: var(--font-semibold);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    cursor: pointer;
+
+    border: 1px solid transparent;
+
+    opacity: 1;
 }
 
-.btn-create:hover {
-    background: var(--button-primary-hover);
-}
+/* DEFAULT */
+.btn-default {
+    background: var(--btn-default-bg);
+    color: var(--btn-default-text);
+    border-color: var(--btn-default-border);
 
-.btn-refresh {
-    width: 52px;
     height: 52px;
+    padding: 0 var(--space-4);
+}
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
+/* PRIMARY */
+.btn-primary {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-text);
 
-    background: var(--card);
+    height: 52px;
+    padding: 0 var(--space-5);
+}
+
+/* SUCCESS */
+.btn-success {
+    background: var(--btn-success-bg);
+    color: var(--btn-success-text);
+}
+
+/* WARNING */
+.btn-warning {
+    background: var(--btn-warning-bg);
+    color: var(--btn-warning-text);
+}
+
+/* DANGER */
+.btn-danger {
+    background: var(--btn-danger-bg);
+    color: var(--btn-danger-text);
+}
+
+/* INFO */
+.btn-info {
+    background: var(--btn-info-bg);
+    color: var(--btn-info-text);
+}
+
+/* UNIFIED STATES (IMPORTANT FIX) */
+
+.btn:hover {
+    opacity: var(--state-hover-opacity);
+}
+
+.btn:active {
+    opacity: var(--state-active-opacity);
 }
 
 /* =========================================================
-   OVERVIEW
+   OVERVIEW CARDS
    ========================================================= */
 
 .overview-grid {
@@ -325,7 +370,7 @@ body {
 }
 
 /* =========================================================
-   PROJECTS
+   PROJECT LIST
    ========================================================= */
 
 .projects-list {
@@ -352,10 +397,12 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-/* SIN HOVER MOVIMIENTO - SOLO CAMBIO VISUAL MINIMO */
+/* SOLO BORDER CHANGE (NO ANIMATION/MOVEMENT) */
 .project-row:hover {
     border-color: var(--border-hover);
 }
+
+/* LEFT */
 
 .project-left {
     display: flex;
@@ -418,7 +465,8 @@ body {
 
     border-radius: var(--radius-full);
 
-    background: var(--badge-default);
+    background: var(--badge-default-bg);
+    color: var(--badge-default-text);
 
     display: inline-flex;
     align-items: center;
@@ -426,29 +474,12 @@ body {
 
     font-size: var(--font-sm);
     font-weight: var(--font-medium);
-}
 
-/* SIN HOVER EFECTO */
-.pipeline-item:hover {
-    background: var(--border);
-}
-
-.pipeline-dot {
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: var(--success);
-}
-
-.no-pipelines {
-    color: var(--text-muted);
-    font-size: var(--font-sm);
+    border: 1px solid var(--border);
 }
 
 /* =========================================================
-   ACTION BUTTONS
+   ICON BUTTONS
    ========================================================= */
 
 .project-right {
@@ -457,71 +488,17 @@ body {
     gap: var(--space-2);
 }
 
-.btn-open {
-    height: 40px;
-
-    padding: 0 var(--space-4);
-
-    border-radius: var(--radius-sm);
-
-    border: none;
-
-    background: var(--button-primary);
-    color: var(--text-inverse);
-
-    font-weight: var(--font-semibold);
-}
-
 .icon-btn {
     width: 40px;
     height: 40px;
 
-    border: 1px solid var(--border);
     border-radius: var(--radius-sm);
 
+    border: 1px solid var(--border);
     background: var(--card);
+    color: var(--text-primary);
 }
 
-.icon-btn:hover {
-    background: var(--badge-default);
-}
-
-.icon-btn.danger:hover {
-    background: var(--danger-light);
-    color: var(--danger);
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 1200px) {
-    .project-row {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 992px) {
-    .sidebar {
-        display: none;
-    }
-
-    .main-content {
-        padding: var(--space-5);
-    }
-}
-
-@media (max-width: 768px) {
-    .projects-header {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .search-wrapper {
-        width: 100%;
-    }
-
-    .projects-title {
-        font-size: var(--font-3xl);
-    }
+.icon-btn.danger {
+    border-color: var(--danger);
 }
