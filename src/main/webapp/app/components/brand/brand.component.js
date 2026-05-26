@@ -5,6 +5,7 @@ angular.module('nexus')
     controller: BrandController,
     bindings: {
         icon: '@',
+        text: '@',
         color: '@'
     }
 });
