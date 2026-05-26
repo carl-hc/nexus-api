@@ -30,9 +30,10 @@
     margin-bottom: var(--space-7);
 }
 
-.brand-title {
+.sidebar-brand h1 {
     font-size: var(--font-lg);
     font-weight: var(--font-bold);
+    margin: 0;
 }
 
 .sidebar-brand small {
