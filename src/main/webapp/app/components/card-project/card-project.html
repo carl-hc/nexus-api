@@ -1,0 +1,60 @@
+
+<div class="project-row">
+
+    <!-- LEFT -->
+    <div class="project-left">
+
+        <nx-brand icon="fa-cube" color="primary"></nx-brand>
+
+        <div>
+
+            <div class="project-name">
+                {{$ctrl.project.name}}
+            </div>
+
+            <div class="project-meta">
+                <span>ID #{{$ctrl.project.id}}</span>
+                <span class="dot"></span>
+                <span>{{$ctrl.project.pipelines.length}} pipelines</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CENTER -->
+    <div class="project-center">
+
+        <div class="pipeline-group" ng-if="$ctrl.project.pipelines.length > 0">
+
+            <div class="pipeline-item" ng-repeat="pipeline in $ctrl.project.pipelines" ng-click="openPipeline(pipeline.id)">
+                {{pipeline.name}}
+            </div>
+
+        </div>
+
+        <div class="no-pipelines" ng-if="$ctrl.project.pipelines.length === 0">
+            No pipelines configured
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+    <div class="project-right">
+
+        <button class="btn btn-primary" ng-click="openProject(project.id)">
+            Open
+        </button>
+
+        <button class="icon-btn primary" ng-click="editProject(project)">
+            <i class="fa fa-pen"></i>
+        </button>
+
+        <button class="icon-btn danger" ng-click="deleteProject(project.id)">
+            <i class="fa fa-trash"></i>
+        </button>
+
+    </div>
+
+</div>

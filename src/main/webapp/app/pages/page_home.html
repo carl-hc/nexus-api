@@ -123,78 +123,9 @@
         <div class="projects-list"
              ng-if="data.projects.length > 0">
 
-            <div class="project-row"
-                 ng-repeat="project in data.projects | filter:filters.search">
+            <div ng-repeat="project in data.projects | filter:filters.search">
 
-                <!-- LEFT -->
-                <div class="project-left">
-
-                    <div class="project-avatar">
-                        {{project.name.charAt(0)}}
-                    </div>
-
-                    <div>
-
-                        <div class="project-name">
-                            {{project.name}}
-                        </div>
-
-                        <div class="project-meta">
-                            <span>ID #{{project.id}}</span>
-                            <span class="dot"></span>
-                            <span>
-                                {{project.pipelines.length || 0}} pipelines
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- CENTER -->
-                <div class="project-center">
-
-                    <div class="pipeline-group"
-                         ng-if="project.pipelines.length > 0">
-
-                        <div class="pipeline-item"
-                             ng-repeat="pipeline in project.pipelines"
-                             ng-click="openPipeline(pipeline.id)">
-
-                            {{pipeline.name}}
-                        </div>
-
-                    </div>
-
-                    <div class="no-pipelines"
-                         ng-if="!project.pipelines || project.pipelines.length === 0">
-
-                        No pipelines configured
-                    </div>
-
-                </div>
-
-
-                <!-- RIGHT -->
-                <div class="project-right">
-
-                    <button class="btn btn-primary"
-                            ng-click="openProject(project.id)">
-                        Open
-                    </button>
-
-                    <button class="icon-btn"
-                            ng-click="editProject(project)">
-                        <i class="fa fa-pen"></i>
-                    </button>
-
-                    <button class="icon-btn danger"
-                            ng-click="deleteProject(project.id)">
-                        <i class="fa fa-trash"></i>
-                    </button>
-
-                </div>
+                <nx-card-project project="project"></nx-card-project>
 
             </div>
 
