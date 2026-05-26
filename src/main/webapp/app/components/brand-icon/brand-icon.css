@@ -1,9 +1,9 @@
 
 /* =========================================================
-   BRAND
+   BRAND ICON
    ========================================================= */
 
-.brand {
+.brand-icon {
     width: 56px;
     height: 56px;
 
@@ -21,44 +21,32 @@
     box-sizing: border-box;
 }
 
-/* DEFAULT */
-
-.brand-default {
-    background: var(--badge-default-bg);
-    color: var(--text-primary);
+.brand-icon-default {
+    background: var(--btn-default-bg);
+    color: var(--btn-default-text);
 }
 
-/* PRIMARY */
-
-.brand-primary {
+.brand-icon-primary {
     background: var(--btn-primary-bg);
     color: var(--btn-primary-text);
 }
 
-/* INFO */
-
-.brand-info {
+.brand-icon-info {
     background: var(--btn-info-bg);
     color: var(--btn-info-text);
 }
 
-/* SUCCESS */
-
-.brand-success {
+.brand-icon-success {
     background: var(--btn-success-bg);
     color: var(--btn-success-text);
 }
 
-/* WARNING */
-
-.brand-warning {
+.brand-icon-warning {
     background: var(--btn-warning-bg);
     color: var(--btn-warning-text);
 }
 
-/* DANGER */
-
-.brand-danger {
+.brand-icon-danger {
     background: var(--btn-danger-bg);
     color: var(--btn-danger-text);
 }
