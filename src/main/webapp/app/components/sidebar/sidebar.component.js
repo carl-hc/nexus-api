@@ -10,11 +10,11 @@ angular.module('nexus')
 
 function SidebarController() {
 
-    var vm = this;
+    var $ctrl = this;
 
-    vm.$onInit = function () {
+    $ctrl.$onInit = function () {
 
-        vm.active = vm.active || 'home';
+        $ctrl.active = $ctrl.active ? $ctrl.active : 'home';
 
     };
 
