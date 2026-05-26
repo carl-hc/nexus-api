@@ -3,7 +3,7 @@
    BRAND ICON
    ========================================================= */
 
-.brand-icon {
+.brand {
     width: 56px;
     height: 56px;
 
@@ -21,32 +21,32 @@
     box-sizing: border-box;
 }
 
-.brand-icon-default {
+.brand-default {
     background: var(--btn-default-bg);
     color: var(--btn-default-text);
 }
 
-.brand-icon-primary {
+.brand-primary {
     background: var(--btn-primary-bg);
     color: var(--btn-primary-text);
 }
 
-.brand-icon-info {
+.brand-info {
     background: var(--btn-info-bg);
     color: var(--btn-info-text);
 }
 
-.brand-icon-success {
+.brand-success {
     background: var(--btn-success-bg);
     color: var(--btn-success-text);
 }
 
-.brand-icon-warning {
+.brand-warning {
     background: var(--btn-warning-bg);
     color: var(--btn-warning-text);
 }
 
-.brand-icon-danger {
+.brand-danger {
     background: var(--btn-danger-bg);
     color: var(--btn-danger-text);
 }

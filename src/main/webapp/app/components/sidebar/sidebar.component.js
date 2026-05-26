@@ -12,10 +12,4 @@ function SidebarController() {
 
     var $ctrl = this;
 
-    $ctrl.$onInit = function () {
-
-        $ctrl.active = $ctrl.active ? $ctrl.active : 'home';
-
-    };
-
 }
