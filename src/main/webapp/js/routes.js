@@ -13,6 +13,11 @@ angular.module('nexusApp')
             controller: 'ProjectsController'
         })
 
+        .when('/projects/:projectId/params', {
+            templateUrl: 'views/project-params.html',
+            controller: 'ProjectParamsController'
+        })
+
         .when('/projects/:projectId/pipelines', {
             templateUrl: 'views/pipelines.html',
             controller: 'PipelinesController'

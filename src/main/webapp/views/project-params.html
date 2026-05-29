@@ -1,0 +1,80 @@
+<div class="page-header mb-4">
+
+    <div>
+        <h2>Project Parameters</h2>
+        <p class="text-muted mb-0">
+            Environment variables and runtime configuration
+        </p>
+    </div>
+
+</div>
+
+<div class="card-modern p-4 mb-4">
+
+    <div class="row g-3">
+
+        <div class="col-md-5">
+            <input type="text"
+                   class="form-control modern-input"
+                   ng-model="param.name"
+                   placeholder="Parameter name">
+        </div>
+
+        <div class="col-md-5">
+            <input type="text"
+                   class="form-control modern-input"
+                   ng-model="param.value"
+                   placeholder="Parameter value">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary-modern w-100"
+                    ng-click="createParam()">
+
+                Add
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card-modern p-4">
+
+    <table class="table modern-table align-middle">
+
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th width="120">Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr ng-repeat="param in params">
+
+            <td>
+                <strong>{{ param.name }}</strong>
+            </td>
+
+            <td>
+                <code>{{ param.value }}</code>
+            </td>
+
+            <td>
+                <button class="btn btn-danger-modern"
+                        ng-click="deleteParam(param.id)">
+
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
