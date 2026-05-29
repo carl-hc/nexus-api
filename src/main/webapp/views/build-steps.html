@@ -1,0 +1,31 @@
+<h2>Build Steps</h2>
+
+<table class="table table-bordered">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Status</th>
+        <th>Init</th>
+        <th>End</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="step in steps">
+
+        <td>{{ step.id }}</td>
+
+        <td>
+            <span class="badge bg-secondary">
+                {{ step.status }}
+            </span>
+        </td>
+
+        <td>{{ step.iniProcess }}</td>
+        <td>{{ step.endProcess }}</td>
+
+    </tr>
+    </tbody>
+
+</table>

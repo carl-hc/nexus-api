@@ -1,0 +1,57 @@
+<h2>Pipeline Steps</h2>
+
+<div class="card mb-4">
+    <div class="card-body">
+
+        <input type="text"
+               class="form-control mb-2"
+               ng-model="step.name"
+               placeholder="Step name">
+
+        <input type="number"
+               class="form-control mb-2"
+               ng-model="step.order"
+               placeholder="Order">
+
+        <textarea class="form-control mb-2"
+                  ng-model="step.command"
+                  placeholder="Command">
+        </textarea>
+
+        <button class="btn btn-primary"
+                ng-click="createStep()">
+            Create
+        </button>
+
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Order</th>
+        <th>Name</th>
+        <th>Command</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="step in steps">
+
+        <td>{{ step.order }}</td>
+        <td>{{ step.name }}</td>
+        <td>
+            <code>{{ step.command }}</code>
+        </td>
+
+        <td>
+            <button class="btn btn-sm btn-danger"
+                    ng-click="deleteStep(step.id)">
+                Delete
+            </button>
+        </td>
+
+    </tr>
+    </tbody>
+</table>

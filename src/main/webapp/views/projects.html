@@ -1,0 +1,100 @@
+<div class="page-header mb-4">
+
+    <div>
+        <h2>Projects</h2>
+        <p class="text-muted mb-0">
+            Manage repositories and CI/CD projects
+        </p>
+    </div>
+
+    <button class="btn btn-primary-modern"
+            data-bs-toggle="collapse"
+            data-bs-target="#createProjectForm">
+
+        <i class="fa-solid fa-plus"></i>
+        New Project
+    </button>
+
+</div>
+
+<div id="createProjectForm" class="collapse mb-4">
+
+    <div class="card-modern p-4">
+
+        <h5 class="mb-3">Create Project</h5>
+
+        <div class="row g-3">
+
+            <div class="col-md-8">
+                <input type="text"
+                       class="form-control modern-input"
+                       ng-model="project.name"
+                       placeholder="Project name">
+            </div>
+
+            <div class="col-md-4">
+                <button class="btn btn-primary-modern w-100"
+                        ng-click="createProject()">
+
+                    Create Project
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row g-4">
+
+    <div class="col-xl-4 col-lg-6"
+         ng-repeat="project in projects">
+
+        <div class="project-card">
+
+            <div class="project-header">
+                <div class="project-icon">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+
+                <div>
+                    <h5>{{ project.name }}</h5>
+                    <small>Project ID #{{ project.id }}</small>
+                </div>
+            </div>
+
+            <div class="project-body">
+                <div class="project-stat">
+                    <span>Pipelines</span>
+                    <strong>12</strong>
+                </div>
+
+                <div class="project-stat">
+                    <span>Builds</span>
+                    <strong>148</strong>
+                </div>
+            </div>
+
+            <div class="project-footer">
+
+                <a class="btn btn-dark-modern"
+                   href="#!/projects/{{ project.id }}/pipelines">
+
+                    <i class="fa-solid fa-diagram-project"></i>
+                    Pipelines
+                </a>
+
+                <button class="btn btn-danger-modern"
+                        ng-click="deleteProject(project.id)">
+
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
