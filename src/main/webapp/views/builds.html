@@ -1,0 +1,42 @@
+<h2>Builds</h2>
+
+<table class="table table-bordered table-hover">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Status</th>
+        <th>Init</th>
+        <th>End</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="build in builds">
+
+        <td>{{ build.id }}</td>
+        <td>
+            <span class="badge bg-primary">
+                {{ build.status }}
+            </span>
+        </td>
+        <td>{{ build.iniProcess }}</td>
+        <td>{{ build.endProcess }}</td>
+
+        <td>
+            <a class="btn btn-sm btn-info"
+               href="#!/builds/{{ build.id }}/steps">
+                Steps
+            </a>
+
+            <button class="btn btn-sm btn-danger"
+                    ng-click="deleteBuild(build.id)">
+                Delete
+            </button>
+        </td>
+
+    </tr>
+    </tbody>
+
+</table>

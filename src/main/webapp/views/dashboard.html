@@ -1,0 +1,104 @@
+<div class="row g-4 mb-4">
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card">
+            <div>
+                <span class="stats-label">System Status</span>
+                <h3>{{ health }}</h3>
+            </div>
+
+            <div class="stats-icon success">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card">
+            <div>
+                <span class="stats-label">Pipelines</span>
+                <h3>24</h3>
+            </div>
+
+            <div class="stats-icon primary">
+                <i class="fa-solid fa-diagram-project"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card">
+            <div>
+                <span class="stats-label">Builds Today</span>
+                <h3>148</h3>
+            </div>
+
+            <div class="stats-icon warning">
+                <i class="fa-solid fa-gears"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="stats-card">
+            <div>
+                <span class="stats-label">Success Rate</span>
+                <h3>98%</h3>
+            </div>
+
+            <div class="stats-icon dark">
+                <i class="fa-solid fa-chart-simple"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card-modern p-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h4 class="mb-1">Recent Activity</h4>
+            <small class="text-muted">
+                Latest pipeline executions
+            </small>
+        </div>
+    </div>
+
+    <table class="table modern-table align-middle">
+
+        <thead>
+        <tr>
+            <th>Pipeline</th>
+            <th>Status</th>
+            <th>Duration</th>
+            <th>Started</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>backend-build</td>
+            <td><span class="status success">SUCCESS</span></td>
+            <td>2m 10s</td>
+            <td>10:22</td>
+        </tr>
+
+        <tr>
+            <td>frontend-tests</td>
+            <td><span class="status running">RUNNING</span></td>
+            <td>1m 14s</td>
+            <td>10:30</td>
+        </tr>
+
+        <tr>
+            <td>deploy-production</td>
+            <td><span class="status failed">FAILED</span></td>
+            <td>48s</td>
+            <td>09:58</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
