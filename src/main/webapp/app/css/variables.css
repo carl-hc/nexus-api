@@ -5,23 +5,23 @@
      COLORS
      ========================= */
 
-  --primary: #0a0f19;
+  --color-primary: #0a0f19;
 
-  --light: #cfcfe6;
+  --color-light: #cfcfe6;
 
-  --dark: #171719;
+  --color-dark: #171719;
 
-  --success: #33ffbb;
-  --success-bg: #ccffee;
+  --color-success: #33ffbb;
+  --color-success-emphasis: #ccffee;
 
-  --warning: #ffbb33;
-  --warning-bg: #ffeecc;
+  --color-warning: #ffbb33;
+  --color-warning-emphasis: #ffeecc;
 
-  --danger: #ff3333;
-  --danger-bg: #ffcccc;
+  --color-danger: #ff3333;
+  --color-danger-emphasis: #ffcccc;
 
-  --info: #3377ff;
-  --info-bg: #ccddff;
+  --color-info: #3377ff;
+  --color-info-emphasis: #ccddff;
 
   /* =========================
      TYPOGRAPHY
@@ -29,19 +29,19 @@
 
   --font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-  --font-1: 12px;
-  --font-2: 14px;
-  --font-3: 16px;
-  --font-4: 18px;
-  --font-5: 20px;
-  --font-6: 24px;
+  --font-size-1: 12px;
+  --font-size-2: 14px;
+  --font-size-3: 16px;
+  --font-size-4: 18px;
+  --font-size-5: 20px;
+  --font-size-6: 24px;
 
-  --weight-1: 300;
-  --weight-2: 400;
-  --weight-3: 500;
-  --weight-4: 600;
-  --weight-5: 700;
-  --weight-6: 800;
+  --font-weight-1: 300;
+  --font-weight-2: 400;
+  --font-weight-3: 500;
+  --font-weight-4: 600;
+  --font-weight-5: 700;
+  --font-weight-6: 800;
 
   /* =========================
      SPACING
@@ -60,10 +60,10 @@
 
   --radius-1: 4px;
   --radius-2: 8px;
-  --radius-3: 10px;
-  --radius-4: 12px;
-  --radius-5: 14px;
-  --radius-6: 14px;
+  --radius-3: 12px;
+  --radius-4: 16px;
+  --radius-5: 20px;
+  --radius-6: 24px;
 
   /* =========================
      SIDEBAR
