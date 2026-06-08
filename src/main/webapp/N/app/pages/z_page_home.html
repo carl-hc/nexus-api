@@ -1,0 +1,311 @@
+<ng-include src="'templates/tpl-navbar.html'"></ng-include>
+
+<div class="container mt-4">
+
+    <!-- HEADER -->
+    <div class="mb-4">
+
+        <h2 class="fw-bold mb-0">
+            <i class="fa fa-tachometer-alt text-primary me-2"></i>
+            Dashboard
+        </h2>
+
+        <small class="text-muted">
+            CI/CD overview and system status
+        </small>
+
+    </div>
+
+    <!-- METRICS -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h6 class="text-muted">Projects</h6>
+
+                            <h3 class="fw-bold">
+                                {{stats.projects}}
+                            </h3>
+
+                        </div>
+
+                        <i class="fa fa-cube fa-2x text-primary"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h6 class="text-muted">Pipelines</h6>
+
+                            <h3 class="fw-bold">
+                                {{stats.pipelines}}
+                            </h3>
+
+                        </div>
+
+                        <i class="fa fa-stream fa-2x text-info"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h6 class="text-muted">Builds</h6>
+
+                            <h3 class="fw-bold">
+                                {{stats.builds}}
+                            </h3>
+
+                        </div>
+
+                        <i class="fa fa-cogs fa-2x text-success"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h6 class="text-muted">Running</h6>
+
+                            <h3 class="fw-bold text-warning">
+                                {{stats.running}}
+                            </h3>
+
+                        </div>
+
+                        <i class="fa fa-spinner fa-2x text-warning"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STATUS SUMMARY -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h5 class="mb-3">Build Status</h5>
+
+                    <div class="d-flex justify-content-between mb-2">
+
+                        <span>SUCCESS</span>
+
+                        <span class="badge bg-success">
+                            {{stats.success}}
+                        </span>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+
+                        <span>FAILED</span>
+
+                        <span class="badge bg-danger">
+                            {{stats.failed}}
+                        </span>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-2">
+
+                        <span>RUNNING</span>
+
+                        <span class="badge bg-warning text-dark">
+                            {{stats.running}}
+                        </span>
+
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+
+                        <span>DISABLED</span>
+
+                        <span class="badge bg-secondary">
+                            {{stats.disabled}}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RECENT BUILDS -->
+        <div class="col-md-8">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+
+                        <h5 class="mb-0">Recent Builds</h5>
+
+                        <button class="btn btn-sm btn-outline-primary"
+                                ng-click="goToBuilds()">
+
+                            View all
+
+                        </button>
+
+                    </div>
+
+                    <table class="table table-sm align-middle mb-0">
+
+                        <thead class="table-light">
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Pipeline</th>
+
+                            <th>Status</th>
+
+                            <th>Time</th>
+
+                        </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                        <tr ng-repeat="b in data.recentBuilds">
+
+                            <td>#{{b.id}}</td>
+
+                            <td>{{getPipelineName(b.pipelineId)}}</td>
+
+                            <td>
+
+                                <span class="badge"
+                                      ng-class="{
+                                        'bg-success': b.status === 'SUCCESS',
+                                        'bg-danger': b.status === 'FAILED',
+                                        'bg-warning text-dark': b.status === 'RUNNING'
+                                      }">
+
+                                    {{b.status}}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+                                {{b.iniProcess | date:'short'}}
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <h5 class="mb-3">Quick Actions</h5>
+
+            <div class="btn-group">
+
+                <button class="btn btn-primary"
+                        ng-click="createProject()">
+
+                    <i class="fa fa-cube me-1"></i>
+                    New Project
+
+                </button>
+
+                <button class="btn btn-success"
+                        ng-click="runLastPipeline()">
+
+                    <i class="fa fa-play me-1"></i>
+                    Run Pipeline
+
+                </button>
+
+                <button class="btn btn-secondary"
+                        ng-click="reloadDashboard()">
+
+                    <i class="fa fa-rotate-right me-1"></i>
+                    Refresh
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

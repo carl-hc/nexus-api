@@ -1,0 +1,549 @@
+<div class="dashboard">
+
+    <!-- HEADER -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <div class="eyebrow">
+                NEXUS CI/CD
+            </div>
+
+            <h1 class="dashboard-title">
+                Dashboard
+            </h1>
+
+            <p class="dashboard-subtitle">
+                Overview of projects, pipelines and builds
+            </p>
+
+        </div>
+
+        <div>
+
+            <button class="btn-refresh"
+                    ng-click="reload()">
+
+                <i class="fa fa-rotate-right"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- METRICS -->
+
+    <div class="metrics-grid">
+
+        <div class="metric-card">
+
+            <div class="metric-icon dark">
+                <i class="fa fa-cube"></i>
+            </div>
+
+            <div>
+
+                <div class="metric-value">
+                    {{data.projects.length}}
+                </div>
+
+                <div class="metric-label">
+                    Projects
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="metric-card">
+
+            <div class="metric-icon blue">
+                <i class="fa fa-stream"></i>
+            </div>
+
+            <div>
+
+                <div class="metric-value">
+                    {{data.pipelines.length}}
+                </div>
+
+                <div class="metric-label">
+                    Pipelines
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="metric-card">
+
+            <div class="metric-icon green">
+                <i class="fa fa-hammer"></i>
+            </div>
+
+            <div>
+
+                <div class="metric-value">
+                    {{data.builds.length}}
+                </div>
+
+                <div class="metric-label">
+                    Builds
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="metric-card">
+
+            <div class="metric-icon"
+                 ng-class="data.health ? 'green' : 'red'">
+
+                <i class="fa fa-heart-pulse"></i>
+
+            </div>
+
+            <div>
+
+                <div class="metric-value">
+
+                    <span ng-if="data.health">
+                        ONLINE
+                    </span>
+
+                    <span ng-if="!data.health">
+                        OFFLINE
+                    </span>
+
+                </div>
+
+                <div class="metric-label">
+                    System Health
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="dashboard-grid">
+
+        <!-- BUILDS -->
+
+        <div class="card card-large">
+
+            <div class="card-header">
+
+                <h3>
+                    Recent Builds
+                </h3>
+
+                <span>
+                    {{data.builds.length}}
+                </span>
+
+            </div>
+
+            <table class="dashboard-table">
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Status</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr ng-repeat="build in data.builds | limitTo:10">
+
+                    <td>
+                        #{{build.id}}
+                    </td>
+
+                    <td>
+                        {{build.name}}
+                    </td>
+
+                    <td>
+
+                        <span class="status-badge">
+
+                            {{build.status || 'UNKNOWN'}}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- PIPELINES -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h3>
+                    Pipelines
+                </h3>
+
+            </div>
+
+            <div class="list">
+
+                <div class="list-item"
+                     ng-repeat="pipeline in data.pipelines | limitTo:8">
+
+                    <div>
+
+                        <div class="item-title">
+                            {{pipeline.name}}
+                        </div>
+
+                        <div class="item-subtitle">
+                            #{{pipeline.id}}
+                        </div>
+
+                    </div>
+
+                    <button class="btn-action"
+                            ng-click="executePipeline(pipeline.id)">
+
+                        Execute
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="card card-full">
+
+            <div class="card-header">
+
+                <h3>
+                    Projects
+                </h3>
+
+                <span>
+                    {{data.projects.length}}
+                </span>
+
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card"
+                     ng-repeat="project in data.projects">
+
+                    <div class="project-avatar">
+
+                        {{project.name.charAt(0)}}
+
+                    </div>
+
+                    <div class="project-name">
+                        {{project.name}}
+                    </div>
+
+                    <div class="project-id">
+                        Project #{{project.id}}
+                    </div>
+
+                    <div class="project-actions">
+
+                        <button class="btn-open"
+                                ng-click="openProject(project.id)">
+
+                            Open
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .dashboard{
+        padding:40px;
+        background:#f4f7fb;
+        min-height:100vh;
+    }
+
+    /* HEADER */
+
+    .dashboard-header{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:32px;
+    }
+
+    .eyebrow{
+        font-size:11px;
+        text-transform:uppercase;
+        letter-spacing:.14em;
+        color:#9ca3af;
+        font-weight:700;
+    }
+
+    .dashboard-title{
+        margin:4px 0;
+        font-size:42px;
+        font-weight:800;
+    }
+
+    .dashboard-subtitle{
+        margin:0;
+        color:#6b7280;
+    }
+
+    /* METRICS */
+
+    .metrics-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:20px;
+        margin-bottom:30px;
+    }
+
+    .metric-card{
+        background:white;
+        border-radius:24px;
+        padding:24px;
+        display:flex;
+        align-items:center;
+        gap:18px;
+        box-shadow:0 10px 30px rgba(15,23,42,.05);
+    }
+
+    .metric-icon{
+        width:64px;
+        height:64px;
+        border-radius:20px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:white;
+        font-size:22px;
+    }
+
+    .metric-icon.dark{
+        background:#111827;
+    }
+
+    .metric-icon.blue{
+        background:#2563eb;
+    }
+
+    .metric-icon.green{
+        background:#10b981;
+    }
+
+    .metric-icon.red{
+        background:#ef4444;
+    }
+
+    .metric-value{
+        font-size:28px;
+        font-weight:800;
+    }
+
+    .metric-label{
+        color:#6b7280;
+    }
+
+    /* GRID */
+
+    .dashboard-grid{
+        display:grid;
+        grid-template-columns:2fr 1fr;
+        gap:24px;
+    }
+
+    .card{
+        background:white;
+        border-radius:28px;
+        padding:24px;
+        box-shadow:0 10px 30px rgba(15,23,42,.05);
+    }
+
+    .card-large{
+        min-height:400px;
+    }
+
+    .card-full{
+        grid-column:1 / -1;
+    }
+
+    .card-header{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:20px;
+    }
+
+    /* TABLE */
+
+    .dashboard-table{
+        width:100%;
+        border-collapse:collapse;
+    }
+
+    .dashboard-table th{
+        text-align:left;
+        padding:12px;
+        color:#6b7280;
+    }
+
+    .dashboard-table td{
+        padding:14px 12px;
+        border-top:1px solid #f1f5f9;
+    }
+
+    .status-badge{
+        padding:6px 12px;
+        border-radius:999px;
+        background:#e5e7eb;
+        font-size:12px;
+        font-weight:600;
+    }
+
+    /* LIST */
+
+    .list{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .list-item{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:14px;
+        border-radius:16px;
+        background:#f8fafc;
+    }
+
+    .item-title{
+        font-weight:600;
+    }
+
+    .item-subtitle{
+        color:#6b7280;
+        font-size:13px;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+        gap:20px;
+    }
+
+    .project-card{
+        background:#f8fafc;
+        border-radius:24px;
+        padding:24px;
+    }
+
+    .project-avatar{
+        width:60px;
+        height:60px;
+        border-radius:18px;
+        background:#111827;
+        color:white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:22px;
+        font-weight:700;
+        margin-bottom:14px;
+    }
+
+    .project-name{
+        font-weight:700;
+        font-size:18px;
+    }
+
+    .project-id{
+        color:#6b7280;
+        margin-top:4px;
+    }
+
+    .project-actions{
+        margin-top:18px;
+    }
+
+    /* BUTTONS */
+
+    .btn-open,
+    .btn-action,
+    .btn-refresh{
+
+        border:none;
+        cursor:pointer;
+        font-weight:600;
+
+    }
+
+    .btn-open,
+    .btn-action{
+
+        background:#111827;
+        color:white;
+        padding:10px 16px;
+        border-radius:12px;
+
+    }
+
+    .btn-refresh{
+
+        width:52px;
+        height:52px;
+        border-radius:16px;
+        background:white;
+
+    }
+
+    @media(max-width:1200px){
+
+        .dashboard-grid{
+            grid-template-columns:1fr;
+        }
+
+    }
+
+</style>

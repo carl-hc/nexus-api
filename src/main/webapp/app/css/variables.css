@@ -1,8 +1,27 @@
-/* =========================================================
-   BASE TOKENS
-   ========================================================= */
 
 :root {
+
+  /* =========================
+     COLORS
+     ========================= */
+
+  --primary: #0a0f19;
+
+  --light: #cfcfe6;
+
+  --dark: #171719;
+
+  --success: #33ffbb;
+  --success-bg: #ccffee;
+
+  --warning: #ffbb33;
+  --warning-bg: #ffeecc;
+
+  --danger: #ff3333;
+  --danger-bg: #ffcccc;
+
+  --info: #3377ff;
+  --info-bg: #ccddff;
 
   /* =========================
      TYPOGRAPHY
@@ -10,21 +29,19 @@
 
   --font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-  --font-xs: 12px;
-  --font-sm: 14px;
-  --font-md: 16px;
-  --font-lg: 18px;
-  --font-xl: 20px;
-  --font-2xl: 24px;
-  --font-3xl: 32px;
-  --font-4xl: 40px;
+  --font-1: 12px;
+  --font-2: 14px;
+  --font-3: 16px;
+  --font-4: 18px;
+  --font-5: 20px;
+  --font-6: 24px;
 
-  --font-light: 300;
-  --font-regular: 400;
-  --font-medium: 500;
-  --font-semibold: 600;
-  --font-bold: 700;
-  --font-extrabold: 800;
+  --weight-1: 300;
+  --weight-2: 400;
+  --weight-3: 500;
+  --weight-4: 600;
+  --weight-5: 700;
+  --weight-6: 800;
 
   /* =========================
      SPACING
@@ -36,141 +53,22 @@
   --space-4: 16px;
   --space-5: 20px;
   --space-6: 24px;
-  --space-7: 32px;
-  --space-8: 40px;
-  --space-9: 48px;
-  --space-10: 64px;
 
   /* =========================
      RADIUS
      ========================= */
 
-  --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
-  --radius-xl: 14px;
-  --radius-full: 999px;
-
-  /* =========================
-     COLORS - BASE
-     ========================= */
-
-  --background: #f4f6f9;
-  --card: #ffffff;
-  --border: #e5e7eb;
-  --border-hover: #d1d5db;
-
-  --text-primary: #111827;
-  --text-secondary: #6b7280;
-  --text-muted: #9ca3af;
-  --text-inverse: #ffffff;
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --radius-3: 10px;
+  --radius-4: 12px;
+  --radius-5: 14px;
+  --radius-6: 14px;
 
   /* =========================
      SIDEBAR
      ========================= */
 
-  --sidebar: #ffffff;
-  --sidebar-hover: #f3f4f6;
-  --sidebar-active: #111827;
+  --sidebar-width: 300px;
 
-  /* =========================
-     BRAND
-     ========================= */
-
-  --brand: #111827;
-
-  /* =========================
-     STATUS COLORS
-     ========================= */
-
-  --primary: #111827;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --info: #3b82f6;
-
-  /* =========================
-     BADGES
-     ========================= */
-
-  --badge-default-bg: #f3f4f6;
-  --badge-default-text: #111827;
-  --badge-default-border: #e5e7eb;
-
-  --badge-primary-bg: #e0e7ff;
-  --badge-primary-text: #1e1b4b;
-  --badge-primary-border: #c7d2fe;
-
-  --badge-success-bg: #d1fae5;
-  --badge-success-text: #065f46;
-  --badge-success-border: #a7f3d0;
-
-  --badge-warning-bg: #fef3c7;
-  --badge-warning-text: #92400e;
-  --badge-warning-border: #fde68a;
-
-  --badge-danger-bg: #fee2e2;
-  --badge-danger-text: #991b1b;
-  --badge-danger-border: #fecaca;
-
-  --badge-info-bg: #dbeafe;
-  --badge-info-text: #1e3a8a;
-  --badge-info-border: #bfdbfe;
-
-  /* =========================
-     BUTTONS
-     ========================= */
-
-  --btn-default-bg: #ffffff;
-  --btn-default-text: #111827;
-  --btn-default-border: #e5e7eb;
-
-  --btn-primary-bg: #111827;
-  --btn-primary-text: #ffffff;
-  --btn-primary-border: #0f172a;
-
-  --btn-success-bg: #10b981;
-  --btn-success-text: #ffffff;
-  --btn-success-border: #0ea371;
-
-  --btn-warning-bg: #f59e0b;
-  --btn-warning-text: #111827;
-  --btn-warning-border: #d97706;
-
-  --btn-danger-bg: #ef4444;
-  --btn-danger-text: #ffffff;
-  --btn-danger-border: #dc2626;
-
-  --btn-info-bg: #3b82f6;
-  --btn-info-text: #ffffff;
-  --btn-info-border: #2563eb;
-
-  /* =========================
-     STATES
-     ========================= */
-
-  --state-hover-opacity: 0.92;
-  --state-active-opacity: 0.85;
-
-  /* =========================
-     SHADOWS
-     ========================= */
-
-  --shadow-sm: 0 1px 6px rgba(17, 24, 39, 0.06);
-  --shadow-md: 0 6px 16px rgba(17, 24, 39, 0.08);
-  --shadow-lg: 0 14px 28px rgba(17, 24, 39, 0.10);
-
-  /* =========================
-     TRANSITIONS (DISABLED)
-     ========================= */
-
-  --transition-fast: none;
-  --transition-normal: none;
-
-  /* =========================
-     LAYOUT
-     ========================= */
-
-  --sidebar-width: 290px;
 }

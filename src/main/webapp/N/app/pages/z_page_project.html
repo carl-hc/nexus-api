@@ -1,0 +1,392 @@
+<div class="project-detail">
+
+    <!-- HEADER -->
+
+    <div class="detail-header">
+
+        <div>
+
+            <div class="eyebrow">
+                PROJECT DETAIL
+            </div>
+
+            <h1 class="detail-title">
+                {{data.project.name}}
+            </h1>
+
+            <p class="detail-subtitle">
+                Project #{{data.project.id}}
+            </p>
+
+        </div>
+
+        <div class="detail-actions">
+
+            <button class="btn-secondary"
+                    ng-click="goBack()">
+
+                Back
+
+            </button>
+
+            <button class="btn-primary"
+                    ng-click="openCreatePipeline()">
+
+                <i class="fa fa-plus"></i>
+                Pipeline
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- OVERVIEW -->
+
+    <div class="overview-grid">
+
+        <div class="overview-card">
+
+            <div class="overview-icon dark">
+                <i class="fa fa-stream"></i>
+            </div>
+
+            <div>
+
+                <div class="overview-value">
+                    {{data.pipelines.length}}
+                </div>
+
+                <div class="overview-label">
+                    Pipelines
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="overview-card">
+
+            <div class="overview-icon success">
+                <i class="fa fa-gears"></i>
+            </div>
+
+            <div>
+
+                <div class="overview-value">
+                    {{data.params.length}}
+                </div>
+
+                <div class="overview-label">
+                    Parameters
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT GRID -->
+
+    <div class="detail-grid">
+
+        <!-- PIPELINES -->
+
+        <div class="card">
+
+            <div class="card-header">
+                <h3>Pipelines</h3>
+            </div>
+
+            <div class="list">
+
+                <div class="list-item"
+                     ng-repeat="pipeline in data.pipelines">
+
+                    <div>
+
+                        <div class="item-title">
+                            {{pipeline.name}}
+                        </div>
+
+                        <div class="item-subtitle">
+                            #{{pipeline.id}}
+                        </div>
+
+                    </div>
+
+                    <div class="actions">
+
+                        <button class="btn-small"
+                                ng-click="openPipeline(pipeline.id)">
+
+                            Open
+
+                        </button>
+
+                        <button class="btn-small dark"
+                                ng-click="executePipeline(pipeline.id)">
+
+                            Run
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PARAMETERS -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <h3>Parameters</h3>
+
+                <button class="btn-small"
+                        ng-click="addParam()">
+
+                    Add
+
+                </button>
+
+            </div>
+
+            <div class="list">
+
+                <div class="list-item"
+                     ng-repeat="param in data.params">
+
+                    <div>
+
+                        <div class="item-title">
+                            {{param.name}}
+                        </div>
+
+                        <div class="item-subtitle">
+                            {{param.value}}
+                        </div>
+
+                    </div>
+
+                    <button class="icon-btn danger"
+                            ng-click="deleteParam(param.id)">
+
+                        <i class="fa fa-trash"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+    .project-detail{
+    padding:40px;
+}
+
+/* HEADER */
+
+.detail-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.eyebrow{
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#9ca3af;
+    font-weight:700;
+}
+
+.detail-title{
+    font-size:42px;
+    font-weight:800;
+    margin:6px 0;
+}
+
+.detail-subtitle{
+    color:#6b7280;
+}
+
+/* ACTIONS */
+
+.detail-actions{
+    display:flex;
+    gap:10px;
+}
+
+.btn-primary,
+.btn-secondary{
+    height:48px;
+    padding:0 18px;
+    border-radius:14px;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:#111827;
+    color:white;
+}
+
+.btn-secondary{
+    background:#f3f4f6;
+}
+
+/* GRID */
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+/* CARDS */
+
+.card{
+    background:white;
+    border-radius:28px;
+    padding:24px;
+    box-shadow:0 10px 30px rgba(15,23,42,.05);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+/* LIST */
+
+.list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.list-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px;
+    background:#f8fafc;
+    border-radius:16px;
+}
+
+.item-title{
+    font-weight:600;
+}
+
+.item-subtitle{
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* OVERVIEW */
+
+.overview-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.overview-card{
+    background:white;
+    border-radius:24px;
+    padding:20px;
+    display:flex;
+    gap:14px;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(15,23,42,.05);
+}
+
+.overview-icon{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+.overview-icon.dark{
+    background:#111827;
+}
+
+.overview-icon.success{
+    background:#10b981;
+}
+
+.overview-value{
+    font-size:26px;
+    font-weight:800;
+}
+
+.overview-label{
+    color:#6b7280;
+}
+
+/* BUTTONS */
+
+.btn-small{
+    border:none;
+    padding:8px 12px;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    font-size:13px;
+    cursor:pointer;
+}
+
+.btn-small.dark{
+    background:#374151;
+}
+
+.icon-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:12px;
+    background:#f3f4f6;
+}
+
+.icon-btn.danger:hover{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .detail-grid{
+        grid-template-columns:1fr;
+    }
+
+    .detail-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+    }
+
+}
+</style>

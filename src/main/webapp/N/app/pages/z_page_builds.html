@@ -1,0 +1,358 @@
+<ng-include src="'templates/tpl-navbar.html'"></ng-include>
+
+<div class="container mt-4">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-0">
+                <i class="fa fa-hammer text-primary me-2"></i>
+                Builds
+            </h2>
+
+            <small class="text-muted">
+                CI/CD build executions
+            </small>
+
+        </div>
+
+        <button class="btn btn-primary"
+                ng-click="openCreateBuildModal()">
+
+            <i class="fa fa-plus me-1"></i>
+            New Build
+
+        </button>
+
+    </div>
+
+    <!-- FILTERS -->
+    <div class="card border-0 shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <div class="row g-2">
+
+                <div class="col-md-5">
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Search build..."
+                           ng-model="filters.search">
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <select class="form-select"
+                            ng-model="filters.status">
+
+                        <option value="">All statuses</option>
+                        <option value="SUCCESS">SUCCESS</option>
+                        <option value="FAILED">FAILED</option>
+                        <option value="RUNNING">RUNNING</option>
+                        <option value="DISABLED">DISABLED</option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-2">
+
+                    <button class="btn btn-outline-secondary w-100"
+                            ng-click="reloadBuilds()">
+
+                        <i class="fa fa-rotate-right me-1"></i>
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="card border-0 shadow-sm">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-light">
+
+                <tr>
+
+                    <th width="60"></th>
+
+                    <th>Build</th>
+
+                    <th>Pipeline</th>
+
+                    <th>Status</th>
+
+                    <th>Start</th>
+
+                    <th>End</th>
+
+                    <th width="180" class="text-end">Actions</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr ng-repeat="build in data.builds | filter:filters.search">
+
+                    <!-- STATUS DOT -->
+                    <td class="text-center">
+
+                        <span class="badge rounded-pill"
+                              ng-class="{
+                                'bg-success': build.status === 'SUCCESS',
+                                'bg-danger': build.status === 'FAILED',
+                                'bg-warning text-dark': build.status === 'RUNNING',
+                                'bg-secondary': !build.status
+                              }">
+
+                            ●
+
+                        </span>
+
+                    </td>
+
+                    <!-- BUILD -->
+                    <td>
+
+                        <div class="fw-bold">
+
+                            <i class="fa fa-hammer text-primary me-2"></i>
+
+                            Build #{{build.id}}
+
+                        </div>
+
+                        <small class="text-muted">
+                            ID: {{build.id}}
+                        </small>
+
+                    </td>
+
+                    <!-- PIPELINE -->
+                    <td>
+
+                        <span class="badge bg-primary-subtle text-primary border">
+
+                            {{getPipelineName(build.pipelineId)}}
+
+                        </span>
+
+                        <small class="text-muted d-block">
+                            Pipeline ID: {{build.pipelineId}}
+                        </small>
+
+                    </td>
+
+                    <!-- STATUS -->
+                    <td>
+
+                        <span class="badge"
+                              ng-class="{
+                                'bg-success': build.status === 'SUCCESS',
+                                'bg-danger': build.status === 'FAILED',
+                                'bg-warning text-dark': build.status === 'RUNNING',
+                                'bg-secondary': !build.status
+                              }">
+
+                            {{build.status || 'UNKNOWN'}}
+
+                        </span>
+
+                    </td>
+
+                    <!-- START -->
+                    <td>
+
+                        <span class="text-muted">
+                            {{build.iniProcess | date:'short'}}
+                        </span>
+
+                    </td>
+
+                    <!-- END -->
+                    <td>
+
+                        <span class="text-muted">
+                            {{build.endProcess | date:'short'}}
+                        </span>
+
+                    </td>
+
+                    <!-- ACTIONS -->
+                    <td class="text-end">
+
+                        <div class="btn-group">
+
+                            <button class="btn btn-sm btn-outline-primary"
+                                    ng-click="openBuild(build.id)">
+
+                                <i class="fa fa-folder-open"></i>
+
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-secondary"
+                                    ng-click="editBuild(build)">
+
+                                <i class="fa fa-pen"></i>
+
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-danger"
+                                    ng-click="deleteBuild(build.id)">
+
+                                <i class="fa fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <!-- EMPTY -->
+                <tr ng-if="data.builds.length === 0">
+
+                    <td colspan="7" class="text-center py-5 text-muted">
+
+                        <i class="fa fa-hammer fa-3x mb-3 d-block"></i>
+
+                        No builds found
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- BUILD MODAL -->
+<!-- ========================= -->
+
+<div class="modal fade" id="buildModal" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    {{form.id ? 'Edit Build' : 'New Build'}}
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <!-- PIPELINE -->
+                <div class="form-group mb-3">
+
+                    <label class="form-label">Pipeline</label>
+
+                    <select class="form-select"
+                            ng-model="form.pipelineId">
+
+                        <option ng-repeat="pipeline in data.pipelines"
+                                value="{{pipeline.id}}">
+
+                            {{pipeline.name}}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- STATUS -->
+                <div class="form-group mb-3">
+
+                    <label class="form-label">Status</label>
+
+                    <select class="form-select"
+                            ng-model="form.status">
+
+                        <option value="SUCCESS">SUCCESS</option>
+                        <option value="FAILED">FAILED</option>
+                        <option value="RUNNING">RUNNING</option>
+                        <option value="DISABLED">DISABLED</option>
+
+                    </select>
+
+                </div>
+
+                <!-- START -->
+                <div class="form-group mb-3">
+
+                    <label class="form-label">Start process</label>
+
+                    <input type="datetime-local"
+                           class="form-control"
+                           ng-model="form.iniProcess">
+
+                </div>
+
+                <!-- END -->
+                <div class="form-group mb-3">
+
+                    <label class="form-label">End process</label>
+
+                    <input type="datetime-local"
+                           class="form-control"
+                           ng-model="form.endProcess">
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+                <button class="btn btn-primary"
+                        ng-click="saveBuild()">
+
+                    Save
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

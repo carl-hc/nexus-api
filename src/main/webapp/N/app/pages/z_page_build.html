@@ -1,0 +1,251 @@
+<ng-include src="'templates/tpl-navbar.html'"></ng-include>
+
+<div class="container-fluid mt-4">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-start mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-0">
+
+                <i class="fa fa-cogs text-primary me-2"></i>
+
+                Build #{{build.id}}
+
+            </h2>
+
+            <small class="text-muted">
+
+                Pipeline ID: {{build.pipelineId}}
+
+            </small>
+
+        </div>
+
+        <div>
+
+            <span class="badge fs-6"
+                  ng-class="{
+                    'bg-success': build.status === 'SUCCESS',
+                    'bg-danger': build.status === 'FAILED',
+                    'bg-warning text-dark': build.status === 'RUNNING',
+                    'bg-secondary': !build.status
+                  }">
+
+                {{build.status || 'UNKNOWN'}}
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- SUMMARY CARD -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">Start</h6>
+
+                    <h5>{{build.iniProcess | date:'medium'}}</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">End</h6>
+
+                    <h5>{{build.endProcess | date:'medium' || 'Running...'}}</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">Duration</h6>
+
+                    <h5>{{getDuration()}}</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <button class="btn btn-outline-primary w-100"
+                            ng-click="reloadBuild()">
+
+                        <i class="fa fa-rotate-right me-1"></i>
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TABS -->
+    <ul class="nav nav-tabs mb-3">
+
+        <li class="nav-item">
+
+            <a class="nav-link"
+               ng-class="{active: tab === 'steps'}"
+               ng-click="tab = 'steps'">
+
+                Steps
+
+            </a>
+
+        </li>
+
+        <li class="nav-item">
+
+            <a class="nav-link"
+               ng-class="{active: tab === 'logs'}"
+               ng-click="tab = 'logs'">
+
+                Logs
+
+            </a>
+
+        </li>
+
+    </ul>
+
+    <!-- ========================= -->
+    <!-- STEPS TAB -->
+    <!-- ========================= -->
+
+    <div ng-show="tab === 'steps'">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <h5 class="mb-3">Execution Steps</h5>
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Status</th>
+
+                        <th>Start</th>
+
+                        <th>End</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr ng-repeat="s in steps">
+
+                        <td class="fw-bold">
+                            {{s.name}}
+                        </td>
+
+                        <td>
+
+                            <span class="badge"
+                                  ng-class="{
+                                    'bg-success': s.status === 'SUCCESS',
+                                    'bg-danger': s.status === 'FAILED',
+                                    'bg-warning text-dark': s.status === 'RUNNING',
+                                    'bg-secondary': !s.status
+                                  }">
+
+                                {{s.status}}
+
+                            </span>
+
+                        </td>
+
+                        <td>{{s.iniProcess | date:'short'}}</td>
+
+                        <td>{{s.endProcess | date:'short'}}</td>
+
+                    </tr>
+
+                    <tr ng-if="steps.length === 0">
+
+                        <td colspan="4" class="text-center text-muted py-4">
+
+                            No steps executed yet
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- LOGS TAB -->
+    <!-- ========================= -->
+
+    <div ng-show="tab === 'logs'">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <h5 class="mb-3">Build Logs</h5>
+
+                <pre class="bg-dark text-light p-3 rounded"
+                     style="height: 400px; overflow: auto;">
+
+{{logs}}
+
+                </pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

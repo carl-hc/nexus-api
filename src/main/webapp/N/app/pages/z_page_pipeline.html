@@ -1,0 +1,273 @@
+<ng-include src="'templates/tpl-navbar.html'"></ng-include>
+
+<div class="container-fluid mt-4">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-start mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-0">
+
+                <i class="fa fa-stream text-primary me-2"></i>
+
+                {{pipeline.name}}
+
+            </h2>
+
+            <small class="text-muted">
+                Pipeline ID: {{pipeline.id}} · Project ID: {{pipeline.projectId}}
+            </small>
+
+        </div>
+
+        <div class="btn-group">
+
+            <button class="btn btn-success"
+                    ng-click="runPipeline()">
+
+                <i class="fa fa-play me-1"></i>
+                Run
+
+            </button>
+
+            <button class="btn btn-secondary"
+                    ng-click="editPipeline()">
+
+                <i class="fa fa-pen me-1"></i>
+                Edit
+
+            </button>
+
+            <button class="btn btn-danger"
+                    ng-click="deletePipeline()">
+
+                <i class="fa fa-trash me-1"></i>
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- TABS -->
+    <ul class="nav nav-tabs mb-3">
+
+        <li class="nav-item">
+
+            <a class="nav-link"
+               ng-class="{active: tab === 'steps'}"
+               ng-click="tab = 'steps'">
+
+                Steps
+
+            </a>
+
+        </li>
+
+        <li class="nav-item">
+
+            <a class="nav-link"
+               ng-class="{active: tab === 'builds'}"
+               ng-click="tab = 'builds'">
+
+                Builds
+
+            </a>
+
+        </li>
+
+    </ul>
+
+    <!-- ========================= -->
+    <!-- STEPS TAB -->
+    <!-- ========================= -->
+
+    <div ng-show="tab === 'steps'">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+
+                    <h5 class="mb-0">Pipeline Steps</h5>
+
+                    <button class="btn btn-primary btn-sm"
+                            ng-click="addStep()">
+
+                        <i class="fa fa-plus"></i>
+                        Add Step
+
+                    </button>
+
+                </div>
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+
+                    <tr>
+
+                        <th width="60">Order</th>
+
+                        <th>Name</th>
+
+                        <th>Command</th>
+
+                        <th width="180" class="text-end">Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr ng-repeat="step in steps">
+
+                        <td>
+                            <span class="badge bg-secondary">
+                                {{step.order}}
+                            </span>
+                        </td>
+
+                        <td class="fw-bold">
+                            {{step.name}}
+                        </td>
+
+                        <td>
+
+                            <code class="text-muted">
+                                {{step.command}}
+                            </code>
+
+                        </td>
+
+                        <td class="text-end">
+
+                            <div class="btn-group">
+
+                                <button class="btn btn-sm btn-outline-secondary"
+                                        ng-click="editStep(step)">
+                                    Edit
+                                </button>
+
+                                <button class="btn btn-sm btn-outline-danger"
+                                        ng-click="deleteStep(step.id)">
+                                    Delete
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                    <tr ng-if="steps.length === 0">
+
+                        <td colspan="4" class="text-center text-muted py-4">
+
+                            No steps defined
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- BUILDS TAB -->
+    <!-- ========================= -->
+
+    <div ng-show="tab === 'builds'">
+
+        <div class="card shadow-sm border-0">
+
+            <div class="card-body">
+
+                <h5 class="mb-3">Build History</h5>
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Status</th>
+
+                        <th>Start</th>
+
+                        <th>End</th>
+
+                        <th class="text-end">Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr ng-repeat="b in builds">
+
+                        <td>#{{b.id}}</td>
+
+                        <td>
+
+                            <span class="badge"
+                                  ng-class="getStatusClass(b.status)">
+
+                                {{b.status}}
+
+                            </span>
+
+                        </td>
+
+                        <td>{{b.iniProcess | date:'short'}}</td>
+
+                        <td>{{b.endProcess | date:'short'}}</td>
+
+                        <td class="text-end">
+
+                            <button class="btn btn-sm btn-outline-primary"
+                                    ng-click="openBuild(b.id)">
+
+                                Open
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    <tr ng-if="builds.length === 0">
+
+                        <td colspan="5" class="text-center text-muted py-4">
+
+                            No builds yet
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

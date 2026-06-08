@@ -1,0 +1,274 @@
+<ng-include src="'templates/tpl-navbar.html'"></ng-include>
+
+<div class="container mt-4">
+
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold mb-0">
+                <i class="fa fa-code-branch text-primary me-2"></i>
+                Pipelines
+            </h2>
+
+            <small class="text-muted">
+                Manage CI/CD pipelines
+            </small>
+
+        </div>
+
+        <button class="btn btn-primary"
+                ng-click="openCreatePipelineModal()">
+
+            <i class="fa fa-plus me-1"></i>
+            New Pipeline
+
+        </button>
+
+    </div>
+
+    <!-- FILTERS -->
+    <div class="card border-0 shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <div class="row g-2">
+
+                <div class="col-md-5">
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Search pipeline..."
+                           ng-model="filters.search">
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <select class="form-select"
+                            ng-model="filters.projectId">
+
+                        <option value="">All projects</option>
+
+                        <option ng-repeat="project in data.projects"
+                                value="{{project.id}}">
+
+                            {{project.name}}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <button class="btn btn-outline-secondary w-100"
+                            ng-click="reloadPipelines()">
+
+                        <i class="fa fa-rotate-right me-1"></i>
+                        Refresh
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+    <div class="card border-0 shadow-sm">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-light">
+
+                <tr>
+
+                    <th>Pipeline</th>
+
+                    <th>Project</th>
+
+                    <th width="200" class="text-end">Actions</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr ng-repeat="pipeline in data.pipelines | filter:filters.search">
+
+                    <!-- PIPELINE NAME -->
+                    <td>
+
+                        <div class="fw-bold">
+
+                            <i class="fa fa-code-branch text-primary me-2"></i>
+
+                            {{pipeline.name}}
+
+                        </div>
+
+                        <small class="text-muted">
+                            ID: {{pipeline.id}}
+                        </small>
+
+                    </td>
+
+                    <!-- PROJECT -->
+                    <td>
+
+                        <span class="badge bg-secondary">
+
+                            {{getProjectName(pipeline.projectId)}}
+
+                        </span>
+
+                        <small class="text-muted d-block">
+                            Project ID: {{pipeline.projectId}}
+                        </small>
+
+                    </td>
+
+                    <!-- ACTIONS -->
+                    <td class="text-end">
+
+                        <div class="btn-group">
+
+                            <button class="btn btn-sm btn-outline-primary"
+                                    ng-click="openPipeline(pipeline.id)">
+
+                                <i class="fa fa-folder-open"></i>
+
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-secondary"
+                                    ng-click="editPipeline(pipeline)">
+
+                                <i class="fa fa-pen"></i>
+
+                            </button>
+
+                            <button class="btn btn-sm btn-outline-danger"
+                                    ng-click="deletePipeline(pipeline.id)">
+
+                                <i class="fa fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                <!-- EMPTY -->
+                <tr ng-if="data.pipelines.length === 0">
+
+                    <td colspan="3" class="text-center py-5 text-muted">
+
+                        <i class="fa fa-code-branch fa-3x mb-3 d-block"></i>
+
+                        No pipelines found
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- PIPELINE MODAL -->
+<!-- ========================= -->
+
+<div class="modal fade" id="pipelineModal" tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    {{form.id ? 'Edit Pipeline' : 'New Pipeline'}}
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <!-- PROJECT -->
+                <div class="form-group mb-3">
+
+                    <label class="form-label">Project</label>
+
+                    <select class="form-select"
+                            ng-model="form.projectId">
+
+                        <option ng-repeat="project in data.projects"
+                                value="{{project.id}}">
+
+                            {{project.name}}
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- NAME -->
+                <div class="form-group mb-3">
+
+                    <label class="form-label">Pipeline name</label>
+
+                    <input type="text"
+                           class="form-control"
+                           ng-model="form.name"
+                           placeholder="Deploy pipeline">
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Cancel
+
+                </button>
+
+                <button class="btn btn-primary"
+                        ng-click="savePipeline()">
+
+                    Save
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
