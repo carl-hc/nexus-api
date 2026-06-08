@@ -1,15 +1,14 @@
 
 :root {
 
-  /* =========================
-     COLORS
-     ========================= */
-
   --color-primary: #0a0f19;
 
-  --color-light: #cfcfe6;
+  --color-text: #000000;
+  --color-text-muted: #8d8d8d;
 
-  --color-dark: #171719;
+  --color-light: #f5f5f5;
+
+  --color-dark: #171717;
 
   --color-success: #33ffbb;
   --color-success-emphasis: #ccffee;
@@ -23,18 +22,14 @@
   --color-info: #3377ff;
   --color-info-emphasis: #ccddff;
 
-  /* =========================
-     TYPOGRAPHY
-     ========================= */
-
   --font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-  --font-size-1: 12px;
-  --font-size-2: 14px;
-  --font-size-3: 16px;
-  --font-size-4: 18px;
-  --font-size-5: 20px;
-  --font-size-6: 24px;
+  --font-size-1: 0.75rem;
+  --font-size-2: 1.00rem;
+  --font-size-3: 1.25rem;
+  --font-size-4: 1.50rem;
+  --font-size-5: 1.75rem;
+  --font-size-6: 2.00rem;
 
   --font-weight-1: 300;
   --font-weight-2: 400;
@@ -43,32 +38,11 @@
   --font-weight-5: 700;
   --font-weight-6: 800;
 
-  /* =========================
-     SPACING
-     ========================= */
-
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-
-  /* =========================
-     RADIUS
-     ========================= */
-
-  --radius-1: 4px;
-  --radius-2: 8px;
-  --radius-3: 12px;
-  --radius-4: 16px;
-  --radius-5: 20px;
-  --radius-6: 24px;
-
-  /* =========================
-     SIDEBAR
-     ========================= */
-
-  --sidebar-width: 300px;
+  --size-1: 0.25rem;
+  --size-2: 0.50rem;
+  --size-3: 0.75rem;
+  --size-4: 1.00rem;
+  --size-5: 1.25rem;
+  --size-6: 1.50rem;
 
 }
