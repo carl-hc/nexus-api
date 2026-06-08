@@ -1,15 +1,9 @@
 angular.module('nexus')
 
 .component('nxSidebar', {
-    templateUrl: 'components/sidebar/sidebar.html',
-    controller: SidebarController,
+    transclude: true,
     bindings: {
-        active: '@'
-    }
+        title: '@'
+    },
+    templateUrl: 'components/sidebar/sidebar.html'
 });
-
-function SidebarController() {
-
-    var $ctrl = this;
-
-}

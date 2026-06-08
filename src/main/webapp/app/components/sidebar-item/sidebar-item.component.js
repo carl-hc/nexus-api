@@ -1,18 +1,11 @@
 angular.module('nexus')
 
 .component('nxSidebarItem', {
-    templateUrl: 'components/sidebar-item/sidebar-item.html',
-    controller: SidebarItemController,
     bindings: {
-        active: '@',
         href: '@',
         icon: '@',
-        text: '@'
-    }
+        label: '@',
+        active: '<'
+    },
+    templateUrl: 'components/sidebar-item/sidebar-item.html'
 });
-
-function SidebarItemController() {
-
-    var $ctrl = this;
-
-}

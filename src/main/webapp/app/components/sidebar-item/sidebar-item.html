@@ -1,8 +1,10 @@
 
-<a class="sidebar-item" ng-class="{active: $ctrl.active}" href="{{$ctrl.href}}">
+<a class="sidebar-item" ng-class="{ 'sidebar-item--active': $ctrl.active }" ng-href="{{$ctrl.href}}">
 
-    <i class="{{$ctrl.icon}}"></i>
+    <i ng-if="$ctrl.icon" class="sidebar-item__icon {{$ctrl.icon}}"></i>
 
-    <span>{{$ctrl.text}}</span>
+    <span class="sidebar-item__label">
+        {{$ctrl.label}}
+    </span>
 
 </a>
