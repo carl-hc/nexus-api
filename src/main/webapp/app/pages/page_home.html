@@ -1,0 +1,137 @@
+<div class="app-layout">
+
+   <nx-sidebar active="home"></nx-sidebar>
+
+
+
+    <!-- =========================================================
+         MAIN CONTENT
+         ========================================================= -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <div class="projects-header">
+
+            <div>
+
+                <div class="eyebrow">
+                    WORKSPACE
+                </div>
+
+                <h1 class="projects-title">
+                    Projects
+                </h1>
+
+                <p class="projects-subtitle">
+                    Centralized management for your CI/CD infrastructure
+                </p>
+
+            </div>
+
+            <div class="header-actions">
+
+                <div class="search-wrapper">
+                    <i class="fa fa-search"></i>
+
+                    <input type="text"
+                           placeholder="Search projects..."
+                           ng-model="filters.search">
+                </div>
+
+                <button class="btn btn-default"
+                        ng-click="reloadProjects()">
+                    <i class="fa fa-rotate-right"></i>
+                </button>
+
+                <button class="btn btn-primary"
+                        ng-click="openCreateProjectModal()">
+                    <i class="fa fa-plus"></i>
+                    New Project
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- OVERVIEW -->
+        <div class="overview-grid">
+
+            <div class="overview-card">
+
+                <div class="overview-icon dark">
+                    <i class="fa fa-cube"></i>
+                </div>
+
+                <div>
+                    <div class="overview-value">
+                        {{data.projects.length}}
+                    </div>
+                    <div class="overview-label">Projects</div>
+                </div>
+
+            </div>
+
+            <div class="overview-card">
+
+                <div class="overview-icon success">
+                    <i class="fa fa-stream"></i>
+                </div>
+
+                <div>
+                    <div class="overview-value">
+                        {{data.pipelines.length || 0}}
+                    </div>
+                    <div class="overview-label">Pipelines</div>
+                </div>
+
+            </div>
+
+            <div class="overview-card">
+
+                <div class="overview-icon dark">
+                    <i class="fa fa-hammer"></i>
+                </div>
+
+                <div>
+                    <div class="overview-value">
+                        {{data.builds.length || 0}}
+                    </div>
+                    <div class="overview-label">Builds</div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMPTY -->
+        <div class="empty-projects"
+             ng-if="data.projects.length === 0">
+
+            <h3>No projects available</h3>
+            <p>Create your first deployment project.</p>
+
+            <button class="btn btn-primary"
+                    ng-click="openCreateProjectModal()">
+                Create Project
+            </button>
+
+        </div>
+
+
+        <!-- PROJECT LIST -->
+        <div class="projects-list"
+             ng-if="data.projects.length > 0">
+
+            <div ng-repeat="project in data.projects | filter:filters.search">
+
+                <nx-card-project project="project"></nx-card-project>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>

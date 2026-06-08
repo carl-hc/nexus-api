@@ -1,0 +1,59 @@
+
+<aside class="sidebar">
+
+    <!-- BRAND -->
+    <div class="sidebar-brand">
+
+        <div class="brand-logo">
+            <i class="fa fa-layer-group"></i>
+        </div>
+
+        <div>
+            <h1>
+                Nexus CI
+            </h1>
+
+            <small>
+                Enterprise Platform
+            </small>
+        </div>
+
+    </div>
+
+    <div class="sidebar-group">
+
+        <div class="sidebar-caption">
+            PLATFORM
+        </div>
+
+        <nx-sidebar-item
+                active="$ctrl.active === 'home'"
+                href="/app/#!/"
+                icon="fa fa-chart-line"
+                text="Dashboard">
+        </nx-sidebar-item>
+
+        <nx-sidebar-item
+                active="$ctrl.active === 'projects'"
+                href="/app/#!/projects"
+                icon="fa fa-cube"
+                text="Projects">
+        </nx-sidebar-item>
+
+        <nx-sidebar-item
+                active="$ctrl.active === 'pipelines'"
+                href="/app/#!/pipelines"
+                icon="fa fa-stream"
+                text="Pipelines">
+        </nx-sidebar-item>
+
+        <nx-sidebar-item
+                active="$ctrl.active === 'builds'"
+                href="/app/#!/builds"
+                icon="fa fa-hammer"
+                text="Builds">
+        </nx-sidebar-item>
+
+    </div>
+
+</aside>
