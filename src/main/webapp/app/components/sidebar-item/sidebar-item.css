@@ -17,12 +17,12 @@
 }
 
 .sidebar-item:hover {
-    background: var(--color-surface-hover);
+    background: var(--color-light);
     color: var(--color-primary);
 }
 
 .sidebar-item--active {
-    background: var(--color-surface-active);
+    background: var(--color-light);
     color: var(--color-primary);
 }
 
