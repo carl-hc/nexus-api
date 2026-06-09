@@ -1,58 +1,81 @@
+<div class="sidebar d-flex flex-column">
 
-<aside class="sidebar">
+    <!-- Logo -->
+    <div class="sidebar-header">
 
-    <div class="sidebar__brand">
+        <a href="/app/#!/" class="brand">
 
-        <div class="sidebar__brand-icon">
+            <i class="fa-solid fa-layer-group brand-icon"></i>
 
-            <i class="fa fa-layer-group"></i>
+            <div>
+                <div class="brand-title">Nexus</div>
+                <div class="brand-subtitle">CI/CD Platform</div>
+            </div>
 
-        </div>
-
-        <div class="sidebar__brand-content">
-
-            <span class="sidebar__name">
-                Nexus
-            </span>
-
-            <span class="sidebar__mute">
-                CI/CD Platform
-            </span>
-
-        </div>
+        </a>
 
     </div>
 
-    <nav class="sidebar__nav">
+    <!-- Navigation -->
+    <div class="sidebar-nav">
 
-        <nx-sidebar-item
-                icon="fa fa-chart-line"
-                label="Dashboard"
-                href="/app/#!/"
-                active="$ctrl.page === 'home'">
-        </nx-sidebar-item>
+        <div class="sidebar-section">GENERAL</div>
 
-        <nx-sidebar-item
-                icon="fa fa-cube"
-                label="Projects"
-                href="/app/#!/projects"
-                active="$ctrl.active === 'projects'">
-        </nx-sidebar-item>
+        <ul class="nav nav-pills flex-column">
 
-        <nx-sidebar-item
-                icon="fa fa-stream"
-                label="Pipelines"
-                href="/app/#!/pipelines"
-                active="$ctrl.active === 'pipelines'">
-        </nx-sidebar-item>
+            <li class="nav-item">
+                <a href="/app/#!/" class="nav-link" ng-class="{ 'active': $ctrl.active === 'home' }">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
 
-        <nx-sidebar-item
-                icon="fa fa-hammer"
-                label="Builds"
-                href="/app/#!/builds"
-                active="$ctrl.active === 'builds'">
-        </nx-sidebar-item>
+            <li class="nav-item">
+                <a href="/app/#!/projects" class="nav-link" ng-class="{ 'active': $ctrl.active === 'projects' }">
+                    <i class="fa-solid fa-cube"></i>
+                    <span>Projects</span>
+                </a>
+            </li>
 
-    </nav>
+            <li class="nav-item">
+                <a href="/app/#!/pipelines" class="nav-link" ng-class="{ 'active': $ctrl.active === 'pipelines' }">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <span>Pipelines</span>
+                </a>
+            </li>
 
-</aside>
+            <li class="nav-item">
+                <a href="/app/#!/builds" class="nav-link" ng-class="{ 'active': $ctrl.active === 'builds' }">
+                    <i class="fa-solid fa-hammer"></i>
+                    <span>Builds</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- User -->
+    <div class="sidebar-user dropdown mt-auto">
+
+        <a href="#" class="user-card dropdown-toggle" data-bs-toggle="dropdown">
+
+            <img src="https://github.com/mdo.png" alt="avatar" class="user-avatar">
+
+            <div>
+                <div class="user-name">mdo</div>
+                <div class="user-role">Administrator</div>
+            </div>
+
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-dark shadow">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+
+    </div>
+
+</div>

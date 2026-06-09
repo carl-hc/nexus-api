@@ -2,7 +2,7 @@ angular.module('nexus')
 
 .component('nxSidebar', {
     bindings: {
-        title: '@'
+        active: '@'
     },
     templateUrl: 'components/sidebar/sidebar.html'
 });
