@@ -1,7 +1,6 @@
 angular.module('nexus')
 
 .component('nxSidebar', {
-    transclude: true,
     bindings: {
         title: '@'
     },

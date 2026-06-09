@@ -1,15 +1,57 @@
 
 <aside class="sidebar">
 
-    <header class="sidebar__header" ng-if="$ctrl.title">
+    <div class="sidebar__brand">
 
-        <h2 class="sidebar__title">
-            {{$ctrl.title}}
-        </h2>
+        <div class="sidebar__brand-icon">
 
-    </header>
+            <i class="fa fa-layer-group"></i>
 
-    <nav class="sidebar__nav" ng-transclude>
+        </div>
+
+        <div class="sidebar__brand-content">
+
+            <span class="sidebar__name">
+                Nexus
+            </span>
+
+            <span class="sidebar__mute">
+                CI/CD Platform
+            </span>
+
+        </div>
+
+    </div>
+
+    <nav class="sidebar__nav">
+
+        <nx-sidebar-item
+                icon="fa fa-chart-line"
+                label="Dashboard"
+                href="/app/#!/"
+                active="$ctrl.page === 'home'">
+        </nx-sidebar-item>
+
+        <nx-sidebar-item
+                icon="fa fa-cube"
+                label="Projects"
+                href="/app/#!/projects"
+                active="$ctrl.active === 'projects'">
+        </nx-sidebar-item>
+
+        <nx-sidebar-item
+                icon="fa fa-stream"
+                label="Pipelines"
+                href="/app/#!/pipelines"
+                active="$ctrl.active === 'pipelines'">
+        </nx-sidebar-item>
+
+        <nx-sidebar-item
+                icon="fa fa-hammer"
+                label="Builds"
+                href="/app/#!/builds"
+                active="$ctrl.active === 'builds'">
+        </nx-sidebar-item>
 
     </nav>
 
