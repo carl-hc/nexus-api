@@ -1,0 +1,28 @@
+
+.nx-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 0.75rem;
+
+    color: var(--color-light);
+    text-decoration: none;
+}
+
+.nx-brand-icon {
+    font-size: 1.8rem;
+
+    color: var(--color-secondary);
+}
+
+.nx-brand-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.nx-brand-subtitle {
+    font-size: 0.75rem;
+
+    color: var(--color-muted);
+}
