@@ -1,112 +1,60 @@
-.sidebar {
+
+.nx-sidebar {
+    display: flex;
+    flex-direction: column;
+
     width: 280px;
     height: 100vh;
-    background: #111827;
-    color: #fff;
+
     padding: 1.5rem;
-    border-right: 1px solid rgba(255,255,255,.08);
+
+    background: var(--color-primary);
+    color: var(--color-light);
 }
 
-/* Logo */
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: white;
-    text-decoration: none;
-}
-
-.brand-icon {
-    font-size: 1.8rem;
-    color: #3b82f6;
-}
-
-.brand-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.brand-subtitle {
-    font-size: .75rem;
-    color: #9ca3af;
-}
-
-/* Sections */
-
-.sidebar-section {
+.nx-sidebar-section {
     margin-top: 2rem;
-    margin-bottom: .75rem;
-    font-size: .75rem;
+    margin-bottom: 0.75rem;
+
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: .08em;
-    color: #6b7280;
+    letter-spacing: 0.08em;
+
+    color: var(--color-muted);
 }
 
-/* Navigation */
+.nx-nav {
+    display: flex;
+    flex-direction: column;
 
-.sidebar .nav-link {
+    gap: 0.5rem;
+}
+
+.nx-nav-link {
     display: flex;
     align-items: center;
-    gap: 12px;
 
-    color: #d1d5db;
-    padding: .8rem 1rem;
-    border-radius: 12px;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
 
-    transition: all .2s ease;
+    color: var(--color-light);
+
+    transition: all 0.2s ease;
 }
 
-.sidebar .nav-link i {
-    width: 20px;
-    text-align: center;
+.nx-nav-link:hover {
+    background: var(--color-secondary);
+    color: var(--color-light);
+
+    transform: translateX(0.2rem);
 }
 
-.sidebar .nav-link:hover {
-    background: rgba(255,255,255,.06);
-    color: #fff;
-    transform: translateX(3px);
+.nx-nav-link-active {
+    background: var(--color-secondary);
+    color: var(--color-light);
 }
 
-.sidebar .nav-link.active {
-    background: #2563eb;
-    color: white;
-    box-shadow: 0 4px 12px rgba(37,99,235,.35);
-}
-
-/* User */
-
-.user-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: .75rem;
-    border-radius: 12px;
-
-    color: white;
-    text-decoration: none;
-
-    background: rgba(255,255,255,.04);
-}
-
-.user-card:hover {
-    background: rgba(255,255,255,.08);
-    color: white;
-}
-
-.user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.user-name {
-    font-weight: 600;
-}
-
-.user-role {
-    font-size: .75rem;
-    color: #9ca3af;
+.nx-nav-link-icon {
+    font-size: 1.0rem;
 }
